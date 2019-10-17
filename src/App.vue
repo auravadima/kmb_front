@@ -1,8 +1,12 @@
 <template>
-  <div>
-    <sidebar v-if="this.$cookies.get('token')"></sidebar>
-    <router-view></router-view>
-  </div>
+  <v-app>
+    <sidebar></sidebar>
+    <v-content>
+      <v-container fluid>
+        <router-view></router-view>
+      </v-container>
+    </v-content>
+  </v-app>
 </template>
 
 <script>
