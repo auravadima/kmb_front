@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <sidebar></sidebar>
+    <sidebar v-if="authorized"></sidebar>
     <v-content>
       <v-container fluid>
         <router-view></router-view>
@@ -17,9 +17,11 @@ export default {
   components: {
     Sidebar,
   },
-  data: () => ({
-    login: '',
-    password: '',
-  }),
+  data: () => ({}),
+  computed: {
+    authorized() {
+      return window.$cookies.get('token') === 'bla bla';
+    },
+  },
 };
 </script>

@@ -38,6 +38,11 @@
 <script>
 export default {
   name: 'auth-form',
+  beforeCreate() {
+    if (this.$cookies.get('token') === 'bla bla') {
+      this.$router.push('/modules');
+    }
+  },
   data: () => ({
     login: '',
     password: '',
