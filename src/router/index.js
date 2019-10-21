@@ -21,6 +21,37 @@ const routes = [
     path: '/modules',
     name: 'modules',
     component: Modules,
+    meta: {
+      title: 'Модули',
+      index: 0,
+    },
+  },
+  {
+    path: '/plans',
+    name: 'plans',
+    component: Modules,
+    meta: {
+      title: 'Планы обучения',
+      index: 1,
+    },
+  },
+  {
+    path: '/users',
+    name: 'users',
+    component: Modules,
+    meta: {
+      title: 'Пользователи',
+      index: 3,
+    },
+  },
+  {
+    path: '/results',
+    name: 'results',
+    component: Modules,
+    meta: {
+      title: 'Результаты',
+      index: 2,
+    },
   },
 ];
 

@@ -45,12 +45,16 @@ export default {
         href: '/users',
       },
     ],
-    index: 0,
   }),
+  computed: {
+    index() {
+      return this.$route.meta.index;
+    },
+  },
 };
 </script>
 
-<style>
+<style scoped>
 #sidebar {
   color: white;
   padding-top: 5px;

@@ -1,3 +1,9 @@
 <template>
-  <h1>Страница с модулями {{$cookies.get('token')}}</h1>
+  <div>
+    <h1>Страница модулей</h1>
+  </div>
 </template>
+
+<script>
+export default {};
+</script>

@@ -1,8 +1,9 @@
 <template>
   <v-app>
-    <sidebar v-if="authorized"></sidebar>
+    <Sidebar v-if="authorized"></Sidebar>
     <v-content>
       <v-container fluid>
+        <Header :text="page"></Header>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -11,16 +12,28 @@
 
 <script>
 import Sidebar from './components/Sidebar.vue';
+import Header from './components/Header.vue';
 
 export default {
   name: 'App',
   components: {
     Sidebar,
+    Header,
   },
-  data: () => ({}),
+  mounted() {
+    this.page = this.$route.meta.title;
+  },
+  data: () => ({
+    page: '',
+  }),
   computed: {
     authorized() {
-      return window.$cookies.get('token') === 'bla bla';
+      return this.$cookies.get('token') === 'bla bla';
+    },
+  },
+  watch: {
+    $route(to) {
+      this.page = to.meta.title;
     },
   },
 };
