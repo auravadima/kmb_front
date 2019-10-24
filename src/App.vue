@@ -2,8 +2,8 @@
   <v-app>
     <Sidebar v-if="authorized"></Sidebar>
     <v-content>
-      <v-container fluid>
-        <Header :text="page"></Header>
+      <v-container class="fill-height" fluid>
+        <Header v-if="authorized" :text="page"></Header>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -38,3 +38,9 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+#full_height {
+  height: 100%;
+}
+</style>

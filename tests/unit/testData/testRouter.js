@@ -1,11 +1,8 @@
-import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Auth from '../components/Auth.vue';
-import Modules from '../components/Modules.vue';
+import Auth from '@/components/Auth.vue';
+import Modules from '@/components/Modules.vue';
 
-Vue.use(VueRouter);
-
-export const routes = [
+const routes = [
   {
     path: '/auth',
     alias: '/',
@@ -51,8 +48,6 @@ export const routes = [
 ];
 
 const router = new VueRouter({
-  mode: 'history',
-  base: process.env.BASE_URL,
   routes,
 });
 
@@ -64,4 +59,4 @@ router.beforeEach((to, from, next) => {
   }
 });
 
-export default router;
+export { routes, router };

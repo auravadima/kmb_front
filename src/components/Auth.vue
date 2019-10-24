@@ -39,7 +39,7 @@
 export default {
   name: 'auth-form',
   beforeCreate() {
-    if (this.$cookies.get('token') === 'bla bla') {
+    if (this.$cookies.get('token') === 'test') {
       this.$router.push('/modules');
     }
   },
@@ -50,7 +50,7 @@ export default {
   methods: {
     authorize() {
       if (this.login === 'admin' && this.password === 'admin') {
-        this.$cookies.set('token', 'bla bla');
+        this.$cookies.set('token', 'test');
         this.$router.push('/modules');
       }
     },

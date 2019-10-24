@@ -1,22 +1,24 @@
 <template>
   <v-container fluid id="header">
     <v-row align="center" justify="space-between">
-      <h1>{{ text }}</h1>
-      <h1>Profile</h1>
+      <h1 v-text="title"></h1>
+      <Profile />
     </v-row>
   </v-container>
 </template>
 
 <script>
+import Profile from './Profile.vue';
+
 export default {
   name: 'app-header',
-  props: {
-    text: String,
+  components: {
+    Profile,
   },
-  mounted() {
-    if (this.text === '') {
-      this.text = window.$router.route.meta.title;
-    }
+  computed: {
+    title() {
+      return this.$route.meta.title;
+    },
   },
 };
 </script>

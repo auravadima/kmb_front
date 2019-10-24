@@ -9,9 +9,9 @@
     <v-spacer></v-spacer>
     <v-divider light class="divider"></v-divider>
     <v-list>
-      <v-list-item-group v-model="index" active-class="active" mandatory>
-        <template v-for="(item, i) in listElems">
-          <router-link :to="item.href" :key="i">
+      <v-list-item-group id="sidebar_list" mandatory>
+        <template v-for="(item, i) in sidebarRoutes">
+          <router-link :class="{ active: i == index }" :to="item.href" :key="i">
             <v-list-item>
               {{ item.name }}
             </v-list-item>
@@ -23,30 +23,12 @@
 </template>
 
 <script>
+import { mapState } from 'vuex';
+
 export default {
   name: 'sidebar',
-  data: () => ({
-    botName: 'KMB Bot',
-    listElems: [
-      {
-        name: 'Модули',
-        href: '/modules',
-      },
-      {
-        name: 'Планы обучения',
-        href: '/plans',
-      },
-      {
-        name: 'Результаты',
-        href: '/results',
-      },
-      {
-        name: 'Пользователи',
-        href: '/users',
-      },
-    ],
-  }),
   computed: {
+    ...mapState(['botName', 'sidebarRoutes']),
     index() {
       return this.$route.meta.index;
     },
