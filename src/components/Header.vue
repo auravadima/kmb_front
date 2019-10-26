@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid id="header">
+  <v-container fluid class="header">
     <v-row align="center" justify="space-between">
       <h1 v-text="title"></h1>
       <Profile />
@@ -23,9 +23,8 @@ export default {
 };
 </script>
 
-<style scoped>
-#header {
-  padding-left: 5%;
-  padding-right: 5%;
-}
+<style lang="stylus" scoped>
+.header
+  padding-left 5%
+  padding-right 5%
 </style>

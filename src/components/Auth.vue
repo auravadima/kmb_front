@@ -14,9 +14,9 @@
                 outlined
                 clearable
                 prepend-inner-icon="person"
-                id="login"
+                id="user_login"
                 label="Login"
-                name="login"
+                name="user_login"
                 type="text"
                 v-model="login"
               ></v-text-field>
@@ -26,9 +26,9 @@
                 :error="error"
                 outlined
                 prepend-inner-icon="security"
-                id="password"
+                id="user_password"
                 label="Password"
-                name="password"
+                name="user_password"
                 type="password"
                 v-model="password"
               ></v-text-field>
