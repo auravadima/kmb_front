@@ -9,6 +9,8 @@
           <v-card-text>
             <v-form>
               <v-text-field
+                :loading="loading"
+                :error="error"
                 id="login"
                 label="Login"
                 name="login"
@@ -17,6 +19,8 @@
               ></v-text-field>
 
               <v-text-field
+                :loading="loading"
+                :error="error"
                 id="password"
                 label="Password"
                 name="password"
@@ -27,7 +31,15 @@
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
-            <v-btn block width="100%" @click="authorize">Login</v-btn>
+            <v-btn
+              large
+              :loading="loading"
+              :disabled="!login || !password"
+              block
+              width="100%"
+              @click="authorize"
+              >Login</v-btn
+            >
           </v-card-actions>
         </v-card>
       </v-col>
@@ -46,13 +58,26 @@ export default {
   data: () => ({
     login: '',
     password: '',
+    loading: false,
+    error: null,
   }),
   methods: {
     authorize() {
-      if (this.login === 'admin' && this.password === 'admin') {
-        this.$cookies.set('token', 'test');
-        this.$router.push('/modules');
-      }
+      this.loading = true;
+      setTimeout(() => {
+        if (this.login === 'admin' && this.password === 'admin') {
+          this.$cookies.set('token', 'test');
+          this.$router.push('/modules');
+        } else {
+          this.error = true;
+          this.login = '';
+          this.password = '';
+          setTimeout(() => {
+            this.error = false;
+          }, 2000);
+        }
+        this.loading = false;
+      }, 2000);
     },
   },
 };

@@ -1,5 +1,6 @@
 import { mount, createLocalVue } from '@vue/test-utils';
 import Vuex from 'vuex';
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuetify from 'vuetify';
 import Sidebar from '@/components/Sidebar.vue';
@@ -10,21 +11,25 @@ const localVue = createLocalVue();
 
 localVue.use(Vuex);
 localVue.use(VueRouter);
-localVue.use(Vuetify);
+Vue.use(Vuetify);
 
 describe('Sidebar.vue', () => {
   let wrapper;
+  let vuetify;
+  let store;
 
   beforeAll(() => {
-    const vuetify = new Vuetify();
+    vuetify = new Vuetify();
     const $cookies = {
       get: () => 'test',
     };
     window.$cookies = $cookies;
-    const store = new Vuex.Store({
+    store = new Vuex.Store({
       state,
     });
+  });
 
+  beforeEach(() => {
     wrapper = mount(Sidebar, {
       localVue,
       vuetify,
@@ -44,7 +49,6 @@ describe('Sidebar.vue', () => {
   it('sidebar has right active links', () => {
     const lis = wrapper.find('#sidebar_list').findAll('.v-list-item');
     lis.at(1).trigger('click');
-    console.log(wrapper.vm.$cookies.get('sd'));
     expect(wrapper.find('.active').text()).toBe('Планы обучения');
   });
 

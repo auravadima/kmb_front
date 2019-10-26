@@ -28,7 +28,7 @@ export default {
   }),
   computed: {
     authorized() {
-      return this.$cookies.get('token') === 'bla bla';
+      return this.$cookies.get('token') === 'test';
     },
   },
   watch: {

@@ -1,4 +1,5 @@
 import { shallowMount, createLocalVue } from '@vue/test-utils';
+import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Vuetify from 'vuetify';
 import VueCookies from 'vue-cookies';
@@ -7,7 +8,7 @@ import Header from '@/components/Header.vue';
 
 const localVue = createLocalVue();
 localVue.use(VueRouter);
-localVue.use(Vuetify);
+Vue.use(Vuetify);
 localVue.use(VueCookies);
 
 describe('Header.vue', () => {
