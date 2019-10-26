@@ -8,25 +8,22 @@ Vue.use(Vuetify);
 
 describe('Auth.vue', () => {
   let wrapper;
-  let $router;
-  let $cookies;
-  let $store;
-  let vuetify;
   let config;
+  let vuetify;
 
   beforeAll(() => {
     vuetify = new Vuetify();
   });
 
   beforeEach(() => {
-    $router = {
+    const $router = {
       push: jest.fn(),
     };
-    $cookies = {
+    const $cookies = {
       get: () => null,
       set: jest.fn(),
     };
-    $store = {
+    const $store = {
       commit: jest.fn(),
     };
 
@@ -46,6 +43,13 @@ describe('Auth.vue', () => {
 
   afterEach(() => {
     jest.useRealTimers();
+  });
+
+  it('should check auth and redirect if authorized', () => {
+    config.mocks.$cookies.get = () => 'test';
+    wrapper = shallowMount(Auth, config);
+    expect(wrapper.vm.$store.commit).toBeCalledWith('authorize', { token: 'test' });
+    expect(wrapper.vm.$router.push).toBeCalledWith('/modules');
   });
 
   it('should redirect if authorized', () => {

@@ -15,22 +15,19 @@ Vue.use(Vuetify);
 
 describe('Sidebar.vue', () => {
   let wrapper;
-  let vuetify;
-  let store;
+  let config;
 
   beforeAll(() => {
-    vuetify = new Vuetify();
+    const vuetify = new Vuetify();
     const $cookies = {
       get: () => 'test',
     };
     window.$cookies = $cookies;
-    store = new Vuex.Store({
+    const store = new Vuex.Store({
       state,
     });
-  });
 
-  beforeEach(() => {
-    wrapper = mount(Sidebar, {
+    config = {
       localVue,
       vuetify,
       store,
@@ -38,24 +35,28 @@ describe('Sidebar.vue', () => {
       mocks: {
         $cookies,
       },
-    });
+    };
+  });
+
+  beforeEach(() => {
+    wrapper = mount(Sidebar, config);
   });
 
   it('sidebar has right count of links', () => {
-    const lis = wrapper.find('#sidebar_list').findAll('.v-list-item');
+    const lis = wrapper.find('.sidebar_list').findAll('.v-list-item');
     expect(lis.lenght).toBe(routes.lenght);
   });
 
   it('sidebar has right active links', async () => {
-    const lis = wrapper.find('#sidebar_list').findAll('.v-list-item');
+    const lis = wrapper.find('.sidebar_list').findAll('.v-list-item');
     lis.at(2).trigger('click');
     await wrapper.vm.$nextTick();
-    expect(wrapper.find('.active').text()).toBe('Результаты');
+    expect(wrapper.find('.sidebar_list_active').text()).toBe('Результаты');
   });
 
   it('computed index is right', () => {
     router.push('/results');
     expect(wrapper.vm.index).toBe(2);
-    expect(wrapper.find('.active').text()).toBe('Результаты');
+    expect(wrapper.find('.sidebar_list_active').text()).toBe('Результаты');
   });
 });
