@@ -46,19 +46,16 @@ describe('Sidebar.vue', () => {
     expect(lis.lenght).toBe(routes.lenght);
   });
 
-  it('sidebar has right active links', () => {
+  it('sidebar has right active links', async () => {
     const lis = wrapper.find('#sidebar_list').findAll('.v-list-item');
-    lis.at(1).trigger('click');
-    expect(wrapper.find('.active').text()).toBe('Планы обучения');
+    lis.at(2).trigger('click');
+    await wrapper.vm.$nextTick();
+    expect(wrapper.find('.active').text()).toBe('Результаты');
   });
 
   it('computed index is right', () => {
-    router.push('/plans');
-    expect(wrapper.vm.index).toBe(1);
-  });
-
-  it('active list item is right', () => {
     router.push('/results');
+    expect(wrapper.vm.index).toBe(2);
     expect(wrapper.find('.active').text()).toBe('Результаты');
   });
 });

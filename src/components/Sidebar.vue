@@ -2,16 +2,16 @@
   <v-navigation-drawer permanent fixed dark app id="sidebar">
     <v-row justify="space-around" align="center">
       <v-avatar size="80px" color="primary">
-        <img src="https://cdn.vuetifyjs.com/images/john.jpg" alt="alt" />
+        <img src="../../public/images/bot.jpg" alt="alt" />
       </v-avatar>
       <h1>{{ botName }}</h1>
     </v-row>
     <v-spacer></v-spacer>
     <v-divider light class="divider"></v-divider>
     <v-list>
-      <v-list-item-group id="sidebar_list" mandatory>
+      <v-list-item-group active-class="active" v-model="index" id="sidebar_list" mandatory>
         <template v-for="(item, i) in sidebarRoutes">
-          <router-link :class="{ active: i == index }" :to="item.href" :key="i">
+          <router-link :to="item.href" :key="i">
             <v-list-item>
               {{ item.name }}
             </v-list-item>

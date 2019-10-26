@@ -1,17 +1,16 @@
 import { createLocalVue, shallowMount } from '@vue/test-utils';
 import Vue from 'vue';
 import Vuetify from 'vuetify';
-import VueCookies from 'vue-cookies';
 import Auth from '@/components/Auth.vue';
 
 const localVue = createLocalVue();
 Vue.use(Vuetify);
-localVue.use(VueCookies);
 
 describe('Auth.vue', () => {
   let wrapper;
   let $router;
   let $cookies;
+  let $store;
   let vuetify;
   let config;
 
@@ -27,6 +26,10 @@ describe('Auth.vue', () => {
       get: () => null,
       set: jest.fn(),
     };
+    $store = {
+      commit: jest.fn(),
+    };
+
     window.$cookies = $cookies;
     config = {
       localVue,
@@ -34,6 +37,7 @@ describe('Auth.vue', () => {
       mocks: {
         $router,
         $cookies,
+        $store,
       },
     };
 

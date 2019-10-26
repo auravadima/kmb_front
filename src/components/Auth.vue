@@ -7,10 +7,13 @@
             <v-toolbar-title>Login form</v-toolbar-title>
           </v-toolbar>
           <v-card-text>
-            <v-form>
+            <v-form ref="form" autocomplete="off">
               <v-text-field
                 :loading="loading"
                 :error="error"
+                outlined
+                clearable
+                prepend-inner-icon="person"
                 id="login"
                 label="Login"
                 name="login"
@@ -21,6 +24,8 @@
               <v-text-field
                 :loading="loading"
                 :error="error"
+                outlined
+                prepend-inner-icon="security"
                 id="password"
                 label="Password"
                 name="password"
@@ -52,6 +57,7 @@ export default {
   name: 'auth-form',
   beforeCreate() {
     if (this.$cookies.get('token') === 'test') {
+      this.$store.commit('authorize', { token: 'test' });
       this.$router.push('/modules');
     }
   },
@@ -67,6 +73,7 @@ export default {
       setTimeout(() => {
         if (this.login === 'admin' && this.password === 'admin') {
           this.$cookies.set('token', 'test');
+          this.$store.commit('authorize', { token: 'test' });
           this.$router.push('/modules');
         } else {
           this.error = true;

@@ -1,9 +1,9 @@
 <template>
   <v-app>
-    <Sidebar v-if="authorized"></Sidebar>
+    <Sidebar v-if="isAuthorized"></Sidebar>
     <v-content>
-      <v-container class="fill-height" fluid>
-        <Header v-if="authorized" :text="page"></Header>
+      <v-container :class="{ 'fill-height': !isAuthorized }" fluid>
+        <Header v-if="isAuthorized" :text="page"></Header>
         <router-view></router-view>
       </v-container>
     </v-content>
@@ -11,6 +11,8 @@
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
+
 import Sidebar from './components/Sidebar.vue';
 import Header from './components/Header.vue';
 
@@ -27,9 +29,7 @@ export default {
     page: '',
   }),
   computed: {
-    authorized() {
-      return this.$cookies.get('token') === 'test';
-    },
+    ...mapGetters(['isAuthorized']),
   },
   watch: {
     $route(to) {

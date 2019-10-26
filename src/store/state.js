@@ -1,5 +1,6 @@
 export default {
   botName: 'KMB Bot',
+  token: '',
   sidebarRoutes: [
     {
       name: 'Модули',

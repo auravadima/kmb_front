@@ -2,6 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import Auth from '../components/Auth.vue';
 import Modules from '../components/Modules.vue';
+import store from '../store';
 
 Vue.use(VueRouter);
 
@@ -56,8 +57,9 @@ const router = new VueRouter({
   routes,
 });
 
-router.beforeEach((to, from, next) => {
-  if (window.$cookies.get('token') == null && to.path !== '/auth') {
+router.beforeEach(async (to, from, next) => {
+  await Vue.nextTick();
+  if (!store.getters.isAuthorized && to.path !== '/auth') {
     next('/auth');
   } else {
     next();
