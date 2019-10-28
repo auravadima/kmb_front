@@ -34,8 +34,11 @@ export default {
   name: 'sidebar',
   computed: {
     ...mapState(['botName', 'sidebarRoutes']),
-    index() {
-      return this.$route.meta.index;
+    index: {
+      get() {
+        return this.$route.meta.index;
+      },
+      set() {},
     },
   },
 };

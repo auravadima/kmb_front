@@ -9,37 +9,11 @@
             <th class="text-left">Автор</th>
             <th class="text-left">Дата добавления</th>
             <th class="text-left">Статус</th>
+            <th></th>
           </tr>
         </thead>
         <tbody>
-          <tr v-for="(item, i) in modules" :key="i">
-            <td>
-              <div>
-                <p v-text="item.name"></p>
-                <p v-text="item.duration"></p>
-                <p v-text="item.tag"></p>
-              </div>
-            </td>
-            <td>
-              <div>
-                <v-avatar>
-                  <img :src="item.author.avatar" alt="User avatar" />
-                </v-avatar>
-                <span>{{ item.author.name }}</span>
-              </div>
-            </td>
-            <td>
-              <div>
-                <p v-text="item.datetime.date"></p>
-                <p v-text="item.datetime.time"></p>
-              </div>
-            </td>
-            <td>
-              <div>
-                <p v-text="item.status"></p>
-              </div>
-            </td>
-          </tr>
+          <ModulesRow v-for="(module, i) in modules" :module="module" :key="i" />
         </tbody>
       </template>
     </v-simple-table>
@@ -47,17 +21,23 @@
 </template>
 
 <script>
+import ModulesRow from './ModulesRow.vue';
+
 export default {
+  components: {
+    ModulesRow,
+  },
+
   data() {
     return {
       modules: [
         {
-          name: 'Name1',
+          name: '🏢 ❤️ Жизнь в офисе',
           duration: '7 дней',
           tag: 'Общий',
           author: {
-            name: 'UserName1',
-            avatar: 'https://cdn.vuetifyjs.com/images/john.jpg',
+            name: 'Роман Жаворонков',
+            avatar: 'https://source.unsplash.com/random/100x100/?user',
           },
           datetime: {
             date: 'May 26, 2019',
@@ -66,12 +46,12 @@ export default {
           status: 'В разработке',
         },
         {
-          name: 'Name1',
+          name: 'Работа с задачами',
           duration: '7 дней',
           tag: 'Общий',
           author: {
-            name: 'UserName1',
-            avatar: 'https://cdn.vuetifyjs.com/images/john.jpg',
+            name: 'Мария Крывда',
+            avatar: 'https://source.unsplash.com/random/100x100/?user',
           },
           datetime: {
             date: 'May 26, 2019',
@@ -80,12 +60,12 @@ export default {
           status: 'В разработке',
         },
         {
-          name: 'Name1',
-          duration: '7 дней',
+          name: 'Swagger',
+          duration: '1 день',
           tag: 'Общий',
           author: {
-            name: 'UserName1',
-            avatar: 'https://cdn.vuetifyjs.com/images/john.jpg',
+            name: 'Юлия Жукова',
+            avatar: 'https://source.unsplash.com/random/100x100/?user',
           },
           datetime: {
             date: 'May 26, 2019',

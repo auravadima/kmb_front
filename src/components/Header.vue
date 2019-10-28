@@ -26,5 +26,5 @@ export default {
 <style lang="stylus" scoped>
 .header
   padding-left 5%
-  padding-right 5%
+  padding-right 2%
 </style>
