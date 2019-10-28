@@ -1,7 +1,7 @@
 <template>
   <v-container fluid class="header">
     <v-row align="center" justify="space-between">
-      <h1 v-text="title"></h1>
+      <p class="header_title" v-text="title"></p>
       <Profile />
     </v-row>
   </v-container>
@@ -27,4 +27,7 @@ export default {
 .header
   padding-left 5%
   padding-right 2%
+
+  &_title
+    font-size 19px
 </style>
