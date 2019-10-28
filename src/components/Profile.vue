@@ -1,6 +1,10 @@
 <template>
   <div class="profile">
-    <v-icon size="30" class="profile_search">search</v-icon>
+    <v-text-field class="profile_search" label="Append">
+      <template v-slot:append>
+        <v-icon size="30" class="profile_search_icon">search</v-icon>
+      </template>
+    </v-text-field>
     <v-divider vertical inset></v-divider>
     <div class="profile_content">
       <p class="profile_content_name">
@@ -37,7 +41,9 @@ export default {
 
   &_search
     margin-right 20px
-    color #C5C7CD !important
+
+    &_icon
+      color #C5C7CD !important
 
   &_content
     margin  0 25px
@@ -49,7 +55,4 @@ export default {
       margin 0
       text-align end
       cursor pointer
-
-  &_avatar
-    align-self baseline
 </style>

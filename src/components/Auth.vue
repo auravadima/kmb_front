@@ -13,10 +13,11 @@
                 :error="error"
                 outlined
                 clearable
+                autofocus
                 prepend-inner-icon="person"
-                id="user_login"
+                id="login"
                 label="Login"
-                name="user_login"
+                name="login"
                 type="text"
                 v-model="login"
               ></v-text-field>
@@ -26,9 +27,9 @@
                 :error="error"
                 outlined
                 prepend-inner-icon="security"
-                id="user_password"
+                id="password"
                 label="Password"
-                name="user_password"
+                name="password"
                 type="password"
                 v-model="password"
               ></v-text-field>
