@@ -26,6 +26,6 @@ describe('Header.vue', () => {
 
   it('title is right', () => {
     router.push('/results');
-    expect(wrapper.find('h1').text()).toBe('Результаты');
+    expect(wrapper.find('.header_title').text()).toBe('Результаты');
   });
 });

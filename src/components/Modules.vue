@@ -17,7 +17,7 @@
         </tbody>
       </template>
     </v-simple-table>
-    <v-pagination circle length="10" total-visible="5"></v-pagination>
+    <v-pagination circle :length="10" total-visible="5"></v-pagination>
   </div>
 </template>
 

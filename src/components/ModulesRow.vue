@@ -27,13 +27,18 @@
       </div>
     </td>
     <td>
-      <v-icon>more_vert</v-icon>
+      <ModulesRowMenu />
     </td>
   </tr>
 </template>
 
 <script>
+import ModulesRowMenu from './ModulesRowMenu.vue';
+
 export default {
+  components: {
+    ModulesRowMenu,
+  },
   props: {
     module: {
       type: Object,
