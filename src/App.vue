@@ -4,9 +4,7 @@
     <v-content>
       <v-container :class="{ 'fill-height': !isAuthorized }" fluid>
         <Header v-if="isAuthorized" :text="page"></Header>
-        <v-card class="content">
-          <router-view></router-view>
-        </v-card>
+        <router-view></router-view>
       </v-container>
     </v-content>
   </v-app>
@@ -41,7 +39,4 @@ export default {
 };
 </script>
 
-<style lang="stylus" scoped>
-.content
-  padding 20px
-</style>
+<style lang="stylus" scoped></style>

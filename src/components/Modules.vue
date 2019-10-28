@@ -1,23 +1,28 @@
 <template>
   <div class="modules">
-    <p class="modules_title">Все модули</p>
-    <v-simple-table>
-      <template>
-        <thead>
-          <tr>
-            <th class="text-left">Название модуля</th>
-            <th class="text-left">Автор</th>
-            <th class="text-left">Дата добавления</th>
-            <th class="text-left">Статус</th>
-            <th></th>
-          </tr>
-        </thead>
-        <tbody>
-          <ModulesRow v-for="(module, i) in modules" :module="module" :key="i" />
-        </tbody>
-      </template>
-    </v-simple-table>
-    <v-pagination circle :length="10" total-visible="5"></v-pagination>
+    <v-card class="modules_content">
+      <p class="modules_title">Все модули</p>
+      <v-simple-table>
+        <template>
+          <thead>
+            <tr>
+              <th class="text-left">Название модуля</th>
+              <th class="text-left">Автор</th>
+              <th class="text-left">Дата добавления</th>
+              <th class="text-left">Статус</th>
+              <th></th>
+            </tr>
+          </thead>
+          <tbody>
+            <ModulesRow v-for="(module, i) in modules" :module="module" :key="i" />
+          </tbody>
+        </template>
+      </v-simple-table>
+      <v-pagination circle length="10" total-visible="5"></v-pagination>
+    </v-card>
+    <div>
+      <v-btn large dark class="modules_add">Добавить модуль</v-btn>
+    </div>
   </div>
 </template>
 
@@ -82,6 +87,14 @@ export default {
 
 <style lang="stylus" scoped>
 .modules
+
+  &_content
+    padding 20px
+
+  &_add
+    margin 20px 0
+    float right
+
   &_title
     font-weight bold
     font-size 19px
