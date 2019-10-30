@@ -25,9 +25,10 @@ export default {
 
 <style lang="stylus" scoped>
 .header
-  padding-left 5%
+  padding-left 2%
   padding-right 2%
 
   &_title
     font-size 19px
+    font-weight bold
 </style>
