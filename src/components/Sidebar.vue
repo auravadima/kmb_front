@@ -4,7 +4,7 @@
       <v-avatar size="80px" color="primary">
         <img src="../../public/images/bot.jpg" alt="alt" />
       </v-avatar>
-      <h1>{{ botName }}</h1>
+        <h1 class="sidebar_title">{{ botName }}</h1>
     </v-row>
     <v-spacer></v-spacer>
     <v-divider light class="sidebar_divider"></v-divider>
@@ -48,6 +48,9 @@ export default {
 .sidebar
   color: white
   padding-top 5px
+
+  &_title
+    margin-right 30px
 
   &_divider
     margin-top 10px
